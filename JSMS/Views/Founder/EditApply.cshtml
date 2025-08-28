@@ -1,0 +1,53 @@
+﻿@model JSMS.Models.VMModels.VMApplies
+@{
+    ViewData["Title"] = "Edit Application";
+}
+
+<h2>Edit Application</h2>
+<hr />
+
+<div class="card p-3 shadow">
+    <form asp-action="EditApply" method="post">
+        @* Hidden ID *@
+        <input type="hidden" asp-for="Apply_id" />
+
+        <div class="mb-3">
+            <label class="form-label">Employee Name</label>
+            <input type="text" class="form-control" asp-for="EmpName" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Employee Email</label>
+            <input type="email" class="form-control" asp-for="EmpEmail" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Resume</label><br />
+            <a href="@Model.EmpResumeUrl" target="_blank" class="btn btn-primary btn-sm">View Resume</a>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Post Applied For</label>
+            <input type="text" class="form-control" asp-for="Post_name" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Remark</label>
+            <textarea asp-for="Remark" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Decision</label><br />
+
+            <input type="radio" asp-for="Status" value="true" /> Approved
+            <input type="radio" asp-for="Status" value="false" /> Rejected
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit Decision</button>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

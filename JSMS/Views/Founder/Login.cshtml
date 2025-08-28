@@ -1,0 +1,61 @@
+﻿@model JSMS.Models.DataBaseModels.Founder
+
+@{
+    ViewData["Title"] = "Founder Login";
+    Layout = null;
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/JSMS.styles.css" asp-append-version="true" />
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center rounded-top-4">
+                    <h3 class="mb-0">🔑 Founder Login</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Login" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <!-- Company Name -->
+                        <div class="mb-3">
+                            <label asp-for="Fd_Company_Name" class="form-label fw-bold"></label>
+                            <input asp-for="Fd_Company_Name" class="form-control" placeholder="Enter your company name" />
+                            <span asp-validation-for="Fd_Company_Name" class="text-danger"></span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label asp-for="Fd_Email" class="form-label fw-bold"></label>
+                            <input asp-for="Fd_Email" type="email" class="form-control" placeholder="example@email.com" />
+                            <span asp-validation-for="Fd_Email" class="text-danger"></span>
+                        </div>
+
+                        <!-- Login Button -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                🔓 Login
+                            </button>
+                        </div>
+                    </form>
+                    @if (@ViewBag.MsgErr  != null)
+                    {   
+                    <p>@ViewBag.MsgErr</p>
+                    }
+                </div>
+                <div class="card-footer text-center bg-light rounded-bottom-4">
+                    <span class="text-muted">Don't have an account?</span>
+                    <a asp-action="Registration" class="fw-bold ms-1">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,49 @@
+﻿@model List<JSMS.Models.VMModels.VMEmpApplication>
+
+@{
+    ViewData["Title"] = "My Applications";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+
+}
+
+<h2 class="mb-4">My Applications</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Post Name</th>
+                <th>Company Name</th>
+                <th>Company Remark</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.PostName</td>
+                    <td>@item.CompanyName</td>
+                    <th>@item.Remark</th>
+                    <td>
+                        @if (item.Status)
+                        {
+                            <span class="badge bg-success">Approved</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        No applications found.
+    </div>
+}

@@ -1,0 +1,59 @@
+﻿@model JSMS.Models.DataBaseModels.Founder
+
+@{
+    ViewData["Title"] = "Founder Registration";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center rounded-top-4">
+                    <h3 class="mb-0">🚀 Founder Registration</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Registration" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <!-- Founder Name -->
+                        <div class="mb-3">
+                            <label asp-for="FdName" class="form-label fw-bold"></label>
+                            <input asp-for="FdName" class="form-control" placeholder="Enter founder's full name" />
+                            <span asp-validation-for="FdName" class="text-danger"></span>
+                        </div>
+
+                        <!-- Company Name -->
+                        <div class="mb-3">
+                            <label asp-for="Fd_Company_Name" class="form-label fw-bold"></label>
+                            <input asp-for="Fd_Company_Name" class="form-control" placeholder="Enter company name" />
+                            <span asp-validation-for="Fd_Company_Name" class="text-danger"></span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label asp-for="Fd_Email" class="form-label fw-bold"></label>
+                            <input asp-for="Fd_Email" type="email" class="form-control" placeholder="example@email.com" />
+                            <span asp-validation-for="Fd_Email" class="text-danger"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                ✅ Create Founder Account
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-light rounded-bottom-4">
+                    <a asp-action="Login" class="text-decoration-none">🔙 Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

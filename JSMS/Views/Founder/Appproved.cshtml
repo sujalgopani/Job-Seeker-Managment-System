@@ -1,0 +1,42 @@
+﻿@model List<JSMS.Models.VMModels.VMApplies>
+@{
+    Layout = "~/Views/Shared/HomeFounder.cshtml";
+
+}
+<h2>Approved Applications</h2>
+<hr />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Email</th>
+            <th>Resume</th>
+            <th>Post</th>
+            <th>Remark</th>
+            <th>Status</th>
+            <th>Response</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EmpName</td>
+                <td>@item.EmpEmail</td>
+                <td><a href="@item.EmpResumeUrl" target="_blank">View Resume</a></td>
+                <td>@item.Post_name</td>
+                <td>@item.Remark</td>
+                <td>@(item.Status ? "Approved" : "Rejected")</td>
+                <td>
+                    <input type="hidden" name="ApplyId" value="@item.Apply_id" />
+
+                <button type="button" name="Apply_id" onclick="window.location.href='/Founder/EditApply/@item.Apply_id'" class="btn btn-dark btn-sm">
+                    Response
+                </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

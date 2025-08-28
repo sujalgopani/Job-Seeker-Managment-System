@@ -1,0 +1,69 @@
+﻿@model JSMS.Models.DataBaseModels.Employee
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center rounded-top-4">
+                    <h3 class="mb-0">📝 Employee Registration</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Register" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmpName" class="form-label fw-bold"></label>
+                            <input asp-for="EmpName" class="form-control" placeholder="Enter your full name" />
+                            <span asp-validation-for="EmpName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmpResume" class="form-label fw-bold">Upload Resume (PDF)</label>
+                            <input type="file" accept=".pdf" class="form-control" asp-for="EmpResume" />
+                            <span asp-validation-for="EmpResume" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmpEmail" class="form-label fw-bold"></label>
+                            <input asp-for="EmpEmail" class="form-control" placeholder="example@email.com" />
+                            <span asp-validation-for="EmpEmail" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmpExpriance" class="form-label fw-bold">Experience (Years)</label>
+                            <input asp-for="EmpExpriance" class="form-control" placeholder="Enter your work experience" />
+                            <span asp-validation-for="EmpExpriance" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmpEducation" class="form-label fw-bold"></label>
+                            <input asp-for="EmpEducation" class="form-control" placeholder="Enter your highest qualification" />
+                            <span asp-validation-for="EmpEducation" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                ✅ Create Account
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-light rounded-bottom-4">
+                    <a asp-action="Login" class="text-decoration-none">
+                        🔙 Back to Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

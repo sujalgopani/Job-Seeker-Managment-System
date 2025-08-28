@@ -1,0 +1,78 @@
+﻿@model JSMS.Models.DataBaseModels.Post
+
+@{
+    Layout = "~/Views/Shared/HomeFounder.cshtml";
+    ViewData["Title"] = "Create Post";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+
+                <!-- Card Header -->
+                <div class="card-header text-white text-center p-4" style="background: linear-gradient(45deg, #ff512f, #dd2476);">
+                    <h3 class="mb-0 fw-bold"><i class="bi bi-pencil-square"></i> Create New Post</h3>
+                    <small class="fw-light">Fill the details below</small>
+                </div>
+
+                <!-- Card Body -->
+                <div class="card-body p-4 bg-light">
+                    <form asp-action="Post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                     
+
+                        <div class="mb-3">
+                            <label asp-for="Post_Name" class="form-label fw-semibold"></label>
+                            <input asp-for="Post_Name" class="form-control shadow-sm" placeholder="Enter post name" />
+                            <span asp-validation-for="Post_Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Post_Count" class="form-label fw-semibold"></label>
+                            <input asp-for="Post_Count" class="form-control shadow-sm" placeholder="Enter count" />
+                            <span asp-validation-for="Post_Count" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Post_Description" class="form-label fw-semibold"></label>
+                            <textarea asp-for="Post_Description" class="form-control shadow-sm" placeholder="Write description..." rows="3"></textarea>
+                            <span asp-validation-for="Post_Description" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4">
+                                <i class="bi bi-arrow-left"></i> Back
+                            </a>
+                            <button type="submit" class="btn btn-primary px-4 shadow-sm">
+                                <i class="bi bi-check2-circle"></i> Create
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+    .form-control, .form-select {
+        border-radius: 10px;
+    }
+</style>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

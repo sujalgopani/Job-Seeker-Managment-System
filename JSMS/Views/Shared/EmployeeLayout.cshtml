@@ -1,0 +1,78 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Employee Panel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .wrapper {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 220px;
+            background: #343a40;
+            color: #fff;
+            padding-top: 20px;
+        }
+
+            .sidebar a {
+                color: #fff;
+                padding: 10px 20px;
+                display: block;
+                text-decoration: none;
+            }
+
+                .sidebar a:hover {
+                    background: #495057;
+                }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        footer {
+            background: #343a40;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h4 class="text-center">Employee</h4>
+            <a asp-controller="Emp" asp-action="Profile">👤 My Profile</a>
+            <a asp-controller="Emp" asp-action="JobList">🏠 JobList</a>
+            <a asp-controller="Emp" asp-action="MyApplies">📋 My Application</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer>
+        &copy; @DateTime.Now.Year Employee Portal - Sujal Gopani
+    </footer>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

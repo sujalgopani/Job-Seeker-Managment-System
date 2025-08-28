@@ -1,0 +1,90 @@
+﻿@model JSMS.Models.DataBaseModels.Employee
+
+@{
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+}
+
+<style>
+    /* Match EmployeeLayout theme */
+    .employee-card {
+        border: none;
+        border-radius: 12px;
+        background-color: var(--card-bg, #ffffff); /* fallback white */
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .employee-card-header {
+        background-color: var(--primary-color, #004085); /* match your layout's main color */
+        color: white;
+        border-radius: 12px 12px 0 0;
+        padding: 15px;
+    }
+
+    .employee-label {
+        color: var(--text-muted-color, #6c757d);
+        font-weight: bold;
+    }
+
+    .employee-value {
+        font-size: 1.1rem;
+        color: var(--text-color, #212529);
+    }
+
+    .btn-theme {
+        background-color: var(--primary-color, #004085);
+        color: white;
+        border: none;
+    }
+
+        .btn-theme:hover {
+            background-color: var(--primary-hover, #003366);
+        }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card employee-card">
+                <div class="employee-card-header text-center">
+                    <h3 class="mb-0">👤 My Profile</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="employee-label">Name:</div>
+                        <div class="employee-value">@Model.EmpName</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="employee-label">Email:</div>
+                        <div class="employee-value">@Model.EmpEmail</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="employee-label">Experience:</div>
+                        <div class="employee-value">@Model.EmpExpriance</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="employee-label">Resume:</div>
+                        @if (!string.IsNullOrEmpty(Model.EmpResumeUrl))
+                        {
+                            <a href="@Model.EmpResumeUrl" class="btn btn-outline-primary w-100" target="_blank">
+                                📄 View Resume
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="text-muted fst-italic">No resume uploaded</span>
+                        }
+                    </div>
+                </div>
+                <div class="card-footer text-center bg-light rounded-bottom-4">
+                    <a href="@Url.Action("EditProfile", "Emp", new { id = Model.EmpId })" class="btn btn-warning me-2">
+                        ✏ Edit Profile
+                    </a>
+                    <a href="@Url.Action("Logout", "Emp")" class="btn btn-danger">
+                        🚪 Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

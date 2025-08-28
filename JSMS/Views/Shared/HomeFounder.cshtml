@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Founder Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            background-color: #212529;
+            color: white;
+            padding-top: 20px;
+        }
+
+            .sidebar a {
+                display: block;
+                padding: 12px 20px;
+                color: white;
+                text-decoration: none;
+                transition: 0.3s;
+                border-radius: 5px;
+                margin: 5px;
+            }
+
+                .sidebar a:hover {
+                    background-color: #495057;
+                }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 250px;
+            width: calc(100% - 250px);
+            background-color: #212529;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-center mb-4">Founder Panel</h4>
+        <a href="@Url.Action("Profile", "Founder")"><i class="bi bi-person"></i> Profile</a>
+        <a href="@Url.Action("Post", "Founder")"><i class="bi bi-person"></i> Add Post</a>
+        <a href="@Url.Action("PostList", "Founder")"><i class="bi bi-person"></i> Your Post</a>
+        <a href="@Url.Action("PostApplies", "Founder")"><i class="bi bi-person"></i> Post Applies</a>
+        <a href="@Url.Action("Appproved", "Founder")"><i class="bi bi-person"></i> Approved Candidate</a>
+        <a href="@Url.Action("Logout", "Founder")" class="text-danger"><i class="bi bi-box-arrow-right"></i> Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="mb-1">© @DateTime.Now.Year - Founder Panel</p>
+        <p class="small mb-0">Designed & Developed by <strong>Sujal Gopani</strong></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

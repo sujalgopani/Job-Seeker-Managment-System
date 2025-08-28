@@ -1,0 +1,60 @@
+﻿@model JSMS.Models.DataBaseModels.Founder
+@{
+    Layout = "~/Views/Shared/HomeFounder.cshtml";
+    ViewData["Title"] = "Founder Profile";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+
+                <!-- Card Header -->
+                <div class="card-header text-white text-center p-4" style="background: linear-gradient(45deg, #0061ff, #60efff);">
+                    <h3 class="mb-0 fw-bold"><i class="bi bi-person-circle"></i> Founder Profile</h3>
+                    <small class="fw-light">Welcome, @Model.FdName</small>
+                </div>
+
+                <!-- Card Body -->
+                <div class="card-body p-4 bg-light">
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-1">Full Name</h6>
+                        <p class="fs-5 fw-semibold">@Model.FdName</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-1">Company</h6>
+                        <p class="fs-5 fw-semibold">@Model.Fd_Company_Name</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-1">Email</h6>
+                        <p class="fs-5 fw-semibold">@Model.Fd_Email</p>
+                    </div>
+                </div>
+
+                <!-- Card Footer -->
+                <div class="card-footer text-center p-3 bg-white border-top">
+                    <a href="@Url.Action("Edit", "Founder", new { id = Model.FdId })" class="btn btn-warning px-4 me-2 shadow-sm">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+                    <a href="@Url.Action("Logout", "Founder")" class="btn btn-danger px-4 shadow-sm">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Profile Card Hover Effect */
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+</style>

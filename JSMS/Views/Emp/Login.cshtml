@@ -1,0 +1,48 @@
+﻿@model JSMS.Models.DataBaseModels.Employee
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/JSMS.styles.css" asp-append-version="true" />
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px; border-radius: 15px;">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-primary">Login</h2>
+            <p class="text-muted">Please enter your details</p>
+        </div>
+
+        <form asp-action="Login" method="post">
+            <div class="mb-3">
+                <label asp-for="EmpName" class="form-label fw-semibold"></label>
+                <input asp-for="EmpName" class="form-control" placeholder="Enter your name" />
+                <span asp-validation-for="EmpName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="EmpEmail" class="form-label fw-semibold"></label>
+                <input asp-for="EmpEmail" class="form-control" placeholder="Enter your email" />
+                <span asp-validation-for="EmpEmail" class="text-danger"></span>
+            </div>
+            @if (ViewBag.ErrMsg != null)
+            {
+                <p class="text-danger">@ViewBag.ErrMsg</p>
+            }
+
+            <div class="text-center mt-3">
+                <a href="@Url.Action("Register", "Emp")" class="mb-3">
+                    Registration
+                </a>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
+                Login
+            </button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

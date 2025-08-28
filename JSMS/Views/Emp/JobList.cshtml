@@ -1,0 +1,36 @@
+﻿@model IEnumerable<JSMS.Models.VMModels.PostList>
+
+@{
+    ViewData["Title"] = "Job List";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+}
+
+<h2 class="mb-4 text-center">Latest Job Openings</h2>
+
+<div class="row g-4">
+    @foreach (var job in Model)
+    {
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary fw-bold">@job.Post_Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        <i class="bi bi-building"></i> @job.Company_Name
+                    </h6>
+                    <p class="card-text text-secondary">
+                        @job.Post_Description
+                    </p>
+                    <p class="mb-2">
+                        <span class="badge bg-info text-dark">Vacancies: @job.Post_Count</span>
+                    </p>
+                    <form action="Joblist" method="post">
+                        <input type="hidden" name="Post_Id" value="@job.Post_Id" />
+                        <input type="hidden" name="FdId" value="@job.FdId" />
+                          <button type="submit" class="btn btn-primary btn-sm">Apply Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
